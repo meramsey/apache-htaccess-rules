@@ -1,0 +1,65 @@
+#Rewrite all urls dynamically to SSL/HTTPS
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+
+# Block WordPress xmlrpc.php requests
+<Files xmlrpc.php>
+   <IfVersion < 2.4>
+      order deny,allow
+      deny from all
+   </IfVersion>
+   <IfVersion >= 2.4>
+      Require all denied
+    </IfVersion>
+</Files>
+
+
+# Block WordPress wp-config.php requests
+<Files wp-config.php>
+   <IfVersion < 2.4>
+      order deny,allow
+      deny from all
+   </IfVersion>
+   <IfVersion >= 2.4>
+      Require all denied
+    </IfVersion>
+</Files>
+
+
+# Block WordPress wp-login.php requests from non whitelisted IPs
+<Files wp-login.php>
+<IfVersion < 2.4>
+Order Deny,Allow
+Deny from all
+
+#Whitelist Office IP
+Allow from <your_IP_here>
+
+#rickroll hackers
+ErrorDocument 403 https://www.youtube.com/watch?v=dQw4w9WgXcQ
+</IfVersion>
+<IfVersion >= 2.4>
+Require all denied
+
+#Whitelist Office IP
+Require ip <your_IP_here>
+
+#rickroll hackers
+ErrorDocument 403 https://www.youtube.com/watch?v=dQw4w9WgXcQ
+</IfVersion>
+
+</Files>
+
+
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+# END WordPress

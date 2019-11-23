@@ -1,4 +1,4 @@
-#Openlitespeed rules for setting up default "/admin/" folder as a honeypot to rickroll hackers and only allow whitelisted IPs to access the real customadmin folder "/cooladmin99/"
+#Openlitespeed rules for setting up default "/admin/" folder to rickroll hackers and only allow whitelisted IPs to access the admin folder "/admin/"
 
 #How to use:
 # This file should be in the document root for the site. Meaning in the directory where these subfolders exists and not inside the subfolders.
@@ -8,11 +8,8 @@
 RewriteCond %{HTTP_HOST} ^www\.(.*)$
 RewriteRule (.*) https://%1/$1 [R=301,L]
 
-#This set of rules will "rickroll" all attempts to default /admin/ directory as a Honeypot to would be hackers
-#Deny all IPs
-RewriteRule ^admin/.*$ https://www.youtube.com/watch?v=dQw4w9WgXcQ
 
-#This set of rules will only allow access to /cooladmin99/ directory if the visitor IP is 123.123.123.123 or one of the below IP's
+#This set of rules will only allow access to /admin/ directory if the visitor IP is 123.123.123.123 or one of the below IP's. All other IPs are redirected to the Youtube link
 #RewriteCond %{REMOTE_ADDR} !^123\.123\.123\.123
 #Allow vpn IPs
 RewriteCond %{REMOTE_ADDR} !^93\.158\.203\.109
@@ -31,4 +28,4 @@ RewriteCond %{REMOTE_ADDR} !^45\.63\.101\.64
 RewriteCond %{REMOTE_ADDR} !^93\.158\.203\.100
 RewriteCond %{REMOTE_ADDR} !^93\.158\.203\.112
 RewriteCond %{REMOTE_ADDR} !^155\.138\.147\.206
-RewriteRule ^cooladmin99/.*$ https://www.youtube.com/watch?v=dQw4w9WgXcQ
+RewriteRule ^admin/.*$ https://www.youtube.com/watch?v=dQw4w9WgXcQ

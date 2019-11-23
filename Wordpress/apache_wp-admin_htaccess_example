@@ -1,0 +1,22 @@
+#Custom Admin
+# ~Username/public_html/wp-admin/.htaccess
+
+<IfVersion < 2.4>
+Order Deny,Allow
+Deny from all
+
+#Whitelist Office IP
+Allow from <your_IP_here>
+
+#rickroll hackers
+ErrorDocument 403 https://www.youtube.com/watch?v=dQw4w9WgXcQ
+</IfVersion>
+<IfVersion >= 2.4>
+Require all denied
+
+#Whitelist Office IP
+Require ip <your_IP_here>
+
+#rickroll hackers
+ErrorDocument 403 https://www.youtube.com/watch?v=dQw4w9WgXcQ
+</IfVersion>

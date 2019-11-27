@@ -1,0 +1,16 @@
+#apache_2.4_sucuri_bypass_protection_htaccess
+#https://docs.sucuri.net/website-firewall/configuration/prevent-sucuri-firewall-bypass/
+#https://docs.sucuri.net/website-firewall/troubleshooting/bypassing-firewall-for-testing/
+
+# Apache 2.4+
+# BEGIN Sucuri Firewall Bypass Prevention
+<FilesMatch ".*">
+Require all denied
+
+Require ip 192.88.134.0/23
+Require ip 185.93.228.0/22
+Require ip 66.248.200.0/22
+Require ip 208.109.0.0/22
+Require ip 2a02:fe80::/29
+#Require ip INSERT YOUR IP HERE
+# END Sucuri Firewall Bypass Prevention

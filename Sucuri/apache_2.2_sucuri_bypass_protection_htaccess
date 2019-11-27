@@ -1,0 +1,18 @@
+#apache_2.2_sucuri_bypass_protection_htaccess
+#https://docs.sucuri.net/website-firewall/configuration/prevent-sucuri-firewall-bypass/
+#https://docs.sucuri.net/website-firewall/troubleshooting/bypassing-firewall-for-testing/
+#Place in top of .htaccess in document root that needs protected
+
+
+# BEGIN Sucuri Firewall Bypass Prevention
+<FilesMatch ".*">
+Order deny,allow
+Deny from all
+Allow from 192.88.134.0/23
+Allow from 185.93.228.0/22
+Allow from 66.248.200.0/22
+Allow from 208.109.0.0/22
+Allow from 2a02:fe80::/29
+#Allow from INSERT YOUR IP HERE
+</FilesMatch>
+# END Sucuri Firewall Bypass Prevention

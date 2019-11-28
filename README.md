@@ -4,9 +4,9 @@ Apache/Openlitespeed htaccess rules collection examples for hiding/securing admi
 
 ## See files sorted by CMS by folder.
 
-### [Sucuri Folder](Sucuri): is for WAF bypass protection to only allow Sucuri IP's to access your site.
+### [Sucuri Folder](Sucuri/): is for WAF bypass protection to only allow Sucuri IP's to access your site.
 
-### [Cloudflare Folder](Cloudflare): is for WAF bypass protection to only allow Cloudflare IP's to access your site.
+### [Cloudflare Folder](Cloudflare/): is for WAF bypass protection to only allow Cloudflare IP's to access your site.
 
 
 ### WTS_VPN_Rules

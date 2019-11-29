@@ -1,0 +1,40 @@
+#openlitespeed_cloudflare_bypass_protection_htaccess
+#Place in top of .htaccess in document root that needs protected
+#
+## References
+#https://docs.sucuri.net/website-firewall/configuration/prevent-sucuri-firewall-bypass/
+#https://docs.sucuri.net/website-firewall/troubleshooting/bypassing-firewall-for-testing/
+#https://community.cloudflare.com/t/prevent-users-bypassing-cloudflare-to-access-my-site/4606
+#https://blog.christophetd.fr/bypassing-cloudflare-using-internet-wide-scan-data/
+#https://www.cloudflare.com/ips/
+#https://support.cloudflare.com/hc/en-us/articles/204899617
+#https://openlitespeed.org/kb/access-control/
+
+# BEGIN Cloudflare Firewall Bypass Prevention for Openlitespeed
+RewriteCond %{REMOTE_ADDR} !^173.245.48.*
+RewriteCond %{REMOTE_ADDR} !^103.21.244.*
+RewriteCond %{REMOTE_ADDR} !^103.22.200.*
+RewriteCond %{REMOTE_ADDR} !^103.31.4.*
+RewriteCond %{REMOTE_ADDR} !^141.101.64.*
+RewriteCond %{REMOTE_ADDR} !^108.162.192.*
+RewriteCond %{REMOTE_ADDR} !^190.93.240.*
+RewriteCond %{REMOTE_ADDR} !^188.114.96.*
+RewriteCond %{REMOTE_ADDR} !^197.234.240.*
+RewriteCond %{REMOTE_ADDR} !^198.41.128.*
+RewriteCond %{REMOTE_ADDR} !^162.158.*.*
+RewriteCond %{REMOTE_ADDR} !^104.16.*.*
+RewriteCond %{REMOTE_ADDR} !^172.64.*.*
+RewriteCond %{REMOTE_ADDR} !^131.0.72.*
+#IPV6
+#RewriteCond %{REMOTE_ADDR} !^2400:cb00::/32
+#RewriteCond %{REMOTE_ADDR} !^2606:4700::/32
+#RewriteCond %{REMOTE_ADDR} !^2803:f800::/32
+#RewriteCond %{REMOTE_ADDR} !^2405:b500::/32
+#RewriteCond %{REMOTE_ADDR} !^2405:8100::/32
+#RewriteCond %{REMOTE_ADDR} !^2a06:98c0::/29
+#RewriteCond %{REMOTE_ADDR} !^2c0f:f248::/32
+#Custom Static IPs whitelist
+#RewriteCond %{REMOTE_ADDR} !^<YOURIP>
+RewriteRule ^(.*)$ - [L,R=403]
+#RewriteRule ^(.*)$ /403-message.html [L,R=403]
+# END Cloudflare Firewall Bypass Prevention

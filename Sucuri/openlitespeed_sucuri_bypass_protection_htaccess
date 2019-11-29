@@ -1,0 +1,19 @@
+#openlitespeed_sucuri_bypass_protection_htaccess
+#https://docs.sucuri.net/website-firewall/configuration/prevent-sucuri-firewall-bypass/
+#https://docs.sucuri.net/website-firewall/troubleshooting/bypassing-firewall-for-testing/
+#https://openlitespeed.org/kb/access-control/
+#Place in top of .htaccess in document root that needs protected
+
+# BEGIN Sucuri Firewall Bypass Prevention for Openlitespeed
+RewriteCond %{REMOTE_ADDR} !^173.245.48.*
+RewriteCond %{REMOTE_ADDR} !^192.88.134.*
+RewriteCond %{REMOTE_ADDR} !^185.93.228.*
+RewriteCond %{REMOTE_ADDR} !^66.248.200.*
+RewriteCond %{REMOTE_ADDR} !^208.109.*.*
+#IPV6
+#RewriteCond %{REMOTE_ADDR} !^2a02:fe80::/29
+#Custom Static IPs whitelist
+#RewriteCond %{REMOTE_ADDR} !^<YOURIP>
+RewriteRule ^(.*)$ - [L,R=403]
+#RewriteRule ^(.*)$ /403-message.html [L,R=403]
+# END Sucuri Firewall Bypass Prevention

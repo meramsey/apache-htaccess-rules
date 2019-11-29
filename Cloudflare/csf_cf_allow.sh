@@ -1,7 +1,7 @@
 #!/bin/bash
 ## Author: Michael Ramsey
 ## Objective: Generate CSF Allow file for Cloudflare IP's /etc/csf/cloudflare.allow
-## https://gitlab.com/mikeramsey/
+## https://gitlab.com/mikeramsey/apache-htaccess-rules/blob/master/Cloudflare/csf_cf_allow.sh
 ## Requirements
 ## Add an include to CSF allow and ignore files.
 ## echo 'Include /etc/csf/sucuri.allow' >> /etc/csf/csf.allow
